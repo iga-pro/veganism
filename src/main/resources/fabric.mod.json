@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "veganism",
+  "version": "${version}",
+  "name": "Veganism",
+  "description": "Entities react to being hit and take revenge, animals scream and summon the Spirit of the Animals, and eating meat is punished by the Veganism effect. Supports Russian and English.",
+  "authors": [
+    "iga-pro"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/veganism",
+    "sources": "https://github.com/iga-pro/veganism",
+    "issues": "https://github.com/iga-pro/veganism/issues"
+  },
+  "license": "GPL-3.0-or-later",
+  "icon": "assets/veganism/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "pro.iga.runningmod.RunningMod"
+    ],
+    "client": [
+      "pro.iga.runningmod.RunningModClient"
+    ],
+    "modmenu": [
+      "pro.iga.runningmod.RunningModMenu"
+    ]
+  },
+  "mixins": [
+    "veganism.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*",
+    "cloth-config2": ">=11.0.0"
+  },
+  "suggests": {
+    "modmenu": ">=7.0.0"
+  }
+}
