@@ -8,6 +8,7 @@
 [![Fabric](https://img.shields.io/badge/Mod%20Loader-Fabric-DBD0B4?logo=fabric)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 [![Modrinth](https://img.shields.io/badge/Download-Modrinth-00AF5C?logo=modrinth&logoColor=white)](https://modrinth.com/mod/veganism)
+[![CurseForge](https://img.shields.io/badge/Download-Curse%20Forge-ff6a39?logo=curseforge&logoColor=white)](https://www.curseforge.com/minecraft/mc-mods/veganism-by-iga)
 
 </div>
 
