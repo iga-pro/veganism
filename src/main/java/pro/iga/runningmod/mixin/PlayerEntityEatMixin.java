@@ -1,5 +1,6 @@
 package pro.iga.runningmod.mixin;
 
+import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,7 +23,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class PlayerEntityEatMixin {
 
     @Inject(method = "eatFood", at = @At("HEAD"), cancellable = true)
-    private void runningmod$veganEat(World world, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
+    private void runningmod$veganEat(World world, ItemStack stack, FoodComponent foodComponent,
+                                     CallbackInfoReturnable<ItemStack> cir) {
         PlayerEntity self = (PlayerEntity) (Object) this;
         if (self.hasStatusEffect(ModEffects.VEGANISM) && NonVeganFoods.isNonVegan(stack.getItem())) {
             if (!world.isClient) {

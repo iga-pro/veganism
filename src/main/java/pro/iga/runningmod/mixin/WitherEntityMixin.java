@@ -3,6 +3,7 @@ package pro.iga.runningmod.mixin;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.server.world.ServerWorld;
 import pro.iga.runningmod.RunningMod;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,8 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class WitherEntityMixin {
 
     @Inject(method = "dropEquipment", at = @At("HEAD"), cancellable = true)
-    private void runningmod$noNetherStar(DamageSource source, int lootingMultiplier,
-                                         boolean allowDrops, CallbackInfo ci) {
+    private void runningmod$noNetherStar(ServerWorld world, DamageSource source,
+                                         boolean causedByPlayer, CallbackInfo ci) {
         Entity self = (Entity) (Object) this;
         if (self.getCommandTags().contains(RunningMod.SPIRIT_TAG)) {
             ci.cancel();

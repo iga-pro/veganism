@@ -25,7 +25,7 @@ public class ItemUseMixin {
                                                  CallbackInfoReturnable<TypedActionResult<ItemStack>> cir) {
         Item self = (Item) (Object) this;
         ItemStack stack = user.getStackInHand(hand);
-        if (self.isFood() && NonVeganFoods.isNonVegan(self) && user.hasStatusEffect(ModEffects.VEGANISM)) {
+        if (NonVeganFoods.isNonVegan(self) && user.hasStatusEffect(ModEffects.VEGANISM)) {
             user.setCurrentHand(hand);
             cir.setReturnValue(TypedActionResult.consume(stack));
         }
