@@ -31,6 +31,11 @@ public final class ModConfig {
     /** Сколько опыта роняет "Дух животных" (обычный визер — 50). */
     public static int spiritXp = 5;
 
+    /** Выдавать ли веганский бонус за стрик без мяса. */
+    public static boolean veganBonusEnabled = true;
+    /** Сколько секунд без не-веганской еды нужно держать для бонуса. */
+    public static int veganBonusSeconds = 300;
+
     /** Язык сообщений мода: авто (из игры) / русский / английский. */
     public static Lang.Mode language = Lang.Mode.AUTO;
 

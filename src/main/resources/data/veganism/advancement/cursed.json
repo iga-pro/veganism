@@ -1,0 +1,15 @@
+{
+  "parent": "veganism:summon_spirit",
+  "display": {
+    "icon": { "id": "minecraft:oak_leaves" },
+    "title": { "translate": "advancements.veganism.cursed.title" },
+    "description": { "translate": "advancements.veganism.cursed.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

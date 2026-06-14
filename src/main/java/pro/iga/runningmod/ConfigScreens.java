@@ -72,6 +72,17 @@ public final class ConfigScreens {
                 .setSaveConsumer(v -> ModConfig.particleMultiplier = v / 10.0f)
                 .build());
 
+        general.addEntry(eb.startBooleanToggle(Text.literal(Lang.optVeganBonus()), ModConfig.veganBonusEnabled)
+                .setDefaultValue(true)
+                .setSaveConsumer(v -> ModConfig.veganBonusEnabled = v)
+                .build());
+
+        general.addEntry(eb.startIntSlider(Text.literal(Lang.optVeganBonusTime()),
+                        ModConfig.veganBonusSeconds, 10, 1200)
+                .setDefaultValue(300)
+                .setSaveConsumer(v -> ModConfig.veganBonusSeconds = v)
+                .build());
+
         ConfigCategory wither = builder.getOrCreateCategory(Text.literal(Lang.catSpirit()));
 
         wither.addEntry(eb.startBooleanToggle(Text.literal(Lang.optWitherEnabled()), ModConfig.witherEnabled)

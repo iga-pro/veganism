@@ -30,8 +30,10 @@ It's a joke mod with real mechanics. Use it for a hardcore "vegan challenge", a 
 - **The Veganism curse** — the Spirit's skulls deal little damage and don't break blocks, but inflict the **Veganism** status effect (5 min, lvl 2) with a custom green-leaf icon.
   - While cursed, eating **non-vegan food** gives you no hunger back — just **Nausea + Hunger**.
   - **Milk does not cure it.**
-- **Adaptive language** — all chat lines, the boss name and the config UI are in **English or Russian**, auto-detected from your game language (overridable in settings).
-- **In-game config** — full **Cloth Config** GUI via **Mod Menu** or the `/prop` command (particle multiplier, Spirit HP, animal kill threshold, Spirit XP, language, …).
+- **Vegan bonus** — go long enough without eating meat (default **5 min** streak) and the animals bless you with a "Clean Conscience" buff (Regeneration + Speed). Eating meat resets the streak.
+- **Advancements** — a full advancement tab with **6 goals** (First Blood → Spirit of the Animals → Cursed → Vengeance, plus Clean Conscience), localized in **English and Russian**.
+- **Adaptive language** — all chat lines, the boss name, advancements and the config UI are in **English or Russian**, auto-detected from your game language (overridable in settings).
+- **In-game config** — full **Cloth Config** GUI via **Mod Menu** or the `/prop` command (particle multiplier, Spirit HP, animal kill threshold, Spirit XP, vegan bonus, language, …).
 
 ## 📦 Supported versions
 
@@ -67,7 +69,7 @@ Requires **JDK 21**.
 $env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot"
 .\gradlew.bat build
 
-# the jar lands in build/libs/veganism-1.0.0.jar
+# the jar lands in build/libs/veganism-1.1.0.jar
 ```
 
 Pick the branch for the version you want first (`git checkout 1.21.1` or `git checkout main`).

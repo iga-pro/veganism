@@ -11,6 +11,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.WitherEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.item.ItemStack;
@@ -72,6 +75,7 @@ public class RunningMod implements ModInitializer {
         ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register((world, entity, killedEntity) -> {
             if (entity instanceof ServerPlayerEntity player) {
                 if (killedEntity instanceof AnimalEntity) {
+                    Advancements.grant(player, "first_kill");
                     if (ModConfig.screamEnabled) {
                         screamOnDeath(world, killedEntity);
                     }
@@ -91,7 +95,7 @@ public class RunningMod implements ModInitializer {
                 onPlayerDeath(player);
             } else if (entity instanceof WitherEntity wither) {
                 // Дух убит — роняет листок и выпускает животных.
-                onSpiritDeath(wither);
+                onSpiritDeath(wither, source);
             }
         });
 
@@ -138,6 +142,7 @@ public class RunningMod implements ModInitializer {
         wither.setTarget(player);
         world.spawnEntity(wither);
         spirits.add(new Spirit(wither, player.getUuid()));
+        Advancements.grant(player, "summon_spirit");
 
         world.spawnParticles(RED_DUST, x, y, z, particles(50), 0.6, 0.9, 0.6, 0.05);
         world.playSound(null, x, y, z,
@@ -181,10 +186,14 @@ public class RunningMod implements ModInitializer {
     }
 
     /** Дух убит игроком: роняет листок и выпускает обычных животных. */
-    private void onSpiritDeath(WitherEntity wither) {
+    private void onSpiritDeath(WitherEntity wither, DamageSource source) {
         boolean wasSpirit = spirits.removeIf(spirit -> spirit.wither == wither);
         if (!wasSpirit) {
             return; // обычный визер, не наш Дух
+        }
+
+        if (source.getAttacker() instanceof ServerPlayerEntity killer) {
+            Advancements.grant(killer, "defeat_spirit");
         }
 
         ServerWorld world = (ServerWorld) wither.getWorld();
@@ -260,6 +269,10 @@ public class RunningMod implements ModInitializer {
 
     private void tick(MinecraftServer server) {
         tickSpirits(server);
+
+        if (ModConfig.veganBonusEnabled) {
+            tickVeganBonus(server);
+        }
 
         if (angryMobs.isEmpty()) {
             return;
@@ -345,6 +358,40 @@ public class RunningMod implements ModInitializer {
                 wither.velocityModified = true;
             }
         }
+    }
+
+    /**
+     * "Веганский бонус": пока игрок держит стрик без не-веганской еды дольше
+     * порога, ему раз в 2 секунды обновляется бафф ("Чистая совесть").
+     * При первом достижении порога выдаётся одноимённое достижение.
+     */
+    private void tickVeganBonus(MinecraftServer server) {
+        int needed = Math.max(1, ModConfig.veganBonusSeconds) * 20;
+        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+            if (player.isSpectator()) {
+                continue;
+            }
+            int streak = VeganStreak.increment(player.getUuid());
+            if (streak < needed) {
+                continue;
+            }
+            if (streak == needed) {
+                Advancements.grant(player, "clean_conscience");
+            }
+            if (streak % 40 == 0) {
+                applyVeganBuff(player);
+            }
+        }
+    }
+
+    /** Бафф за веганский стрик: лёгкая регенерация и скорость. */
+    private void applyVeganBuff(ServerPlayerEntity player) {
+        // 80 тиков длительности при обновлении раз в 40 тиков — эффект непрерывен.
+        // ambient=true, particlesHidden, иконка видна.
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.REGENERATION, 80, 0, true, false, true));
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.SPEED, 80, 0, true, false, true));
     }
 
     /** Чем выше сложность, тем больше HP снимается при столкновении. */

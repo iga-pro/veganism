@@ -1,3 +1,21 @@
 {
-  "effect.veganism.veganism": "Veganism"
+  "effect.veganism.veganism": "Veganism",
+
+  "advancements.veganism.root.title": "Veganism",
+  "advancements.veganism.root.description": "A new way of life. The animals are watching.",
+
+  "advancements.veganism.first_kill.title": "First Blood",
+  "advancements.veganism.first_kill.description": "Kill your first animal. They won't forget.",
+
+  "advancements.veganism.summon_spirit.title": "Spirit of the Animals",
+  "advancements.veganism.summon_spirit.description": "Kill enough animals to summon their avenging Spirit.",
+
+  "advancements.veganism.cursed.title": "Cursed",
+  "advancements.veganism.cursed.description": "Get struck by the Spirit and catch Veganism. Meat is off the menu.",
+
+  "advancements.veganism.defeat_spirit.title": "Vengeance",
+  "advancements.veganism.defeat_spirit.description": "Defeat the Spirit of the Animals.",
+
+  "advancements.veganism.clean_conscience.title": "Clean Conscience",
+  "advancements.veganism.clean_conscience.description": "Go long enough without eating meat to earn the animals' blessing."
 }

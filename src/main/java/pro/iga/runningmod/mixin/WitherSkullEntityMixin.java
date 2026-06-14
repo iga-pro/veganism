@@ -5,9 +5,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.WitherSkullEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
+import pro.iga.runningmod.Advancements;
 import pro.iga.runningmod.ModEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -62,6 +64,9 @@ public class WitherSkullEntityMixin {
         Entity hit = entityHitResult.getEntity();
         if (!hit.getWorld().isClient && hit instanceof PlayerEntity player) {
             player.addStatusEffect(new StatusEffectInstance(ModEffects.VEGANISM, 6000, 1));
+            if (player instanceof ServerPlayerEntity serverPlayer) {
+                Advancements.grant(serverPlayer, "cursed");
+            }
         }
     }
 }

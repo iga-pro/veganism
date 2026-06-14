@@ -1,0 +1,15 @@
+{
+  "parent": "veganism:summon_spirit",
+  "display": {
+    "icon": { "id": "minecraft:nether_star" },
+    "title": { "translate": "advancements.veganism.defeat_spirit.title" },
+    "description": { "translate": "advancements.veganism.defeat_spirit.description" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

@@ -73,8 +73,10 @@ public final class Lang {
 
     // ---------- Фразы ----------
 
-    public static String running() {
-        return s("Я бегу!", "Im Running!");
+    /** Предупреждение: в креативе/с читами мод не работает. */
+    public static String creativeWarning() {
+        return s("Veganism — мод для выживания! В креативе и с читами механики не работают: игрок неуязвим и мобы его не трогают.",
+                 "Veganism is a survival mod! It won't work in creative or with cheats — you're invulnerable and mobs ignore you.");
     }
 
     private static final String[] ATTACK_RU = {
@@ -188,5 +190,13 @@ public final class Lang {
 
     public static String optSpiritXp() {
         return s("Опыт с Духа", "Spirit XP drop");
+    }
+
+    public static String optVeganBonus() {
+        return s("Веганский бонус", "Vegan bonus");
+    }
+
+    public static String optVeganBonusTime() {
+        return s("Стрик для бонуса (сек)", "Streak for bonus (sec)");
     }
 }

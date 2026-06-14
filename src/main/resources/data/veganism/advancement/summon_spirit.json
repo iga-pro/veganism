@@ -1,0 +1,15 @@
+{
+  "parent": "veganism:first_kill",
+  "display": {
+    "icon": { "id": "minecraft:wither_skeleton_skull" },
+    "title": { "translate": "advancements.veganism.summon_spirit.title" },
+    "description": { "translate": "advancements.veganism.summon_spirit.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}
