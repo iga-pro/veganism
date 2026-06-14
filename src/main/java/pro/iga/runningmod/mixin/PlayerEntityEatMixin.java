@@ -9,6 +9,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import pro.iga.runningmod.ModEffects;
 import pro.iga.runningmod.NonVeganFoods;
+import pro.iga.runningmod.VeganStreak;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,7 +25,12 @@ public class PlayerEntityEatMixin {
     @Inject(method = "eatFood", at = @At("HEAD"), cancellable = true)
     private void runningmod$veganEat(World world, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         PlayerEntity self = (PlayerEntity) (Object) this;
-        if (self.hasStatusEffect(ModEffects.VEGANISM) && NonVeganFoods.isNonVegan(stack.getItem())) {
+        boolean nonVegan = NonVeganFoods.isNonVegan(stack.getItem());
+        if (nonVegan && !world.isClient) {
+            // Съел мясо — веганский стрик обнуляется.
+            VeganStreak.reset(self.getUuid());
+        }
+        if (self.hasStatusEffect(ModEffects.VEGANISM) && nonVegan) {
             if (!world.isClient) {
                 self.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 200, 2));  // 10с
                 self.addStatusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 200, 1));   // 10с

@@ -1,0 +1,15 @@
+{
+  "parent": "veganism:root",
+  "display": {
+    "icon": { "item": "minecraft:apple" },
+    "title": { "translate": "advancements.veganism.clean_conscience.title" },
+    "description": { "translate": "advancements.veganism.clean_conscience.description" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

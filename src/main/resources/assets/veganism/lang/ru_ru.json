@@ -1,3 +1,21 @@
 {
-  "effect.veganism.veganism": "Веганство"
+  "effect.veganism.veganism": "Веганство",
+
+  "advancements.veganism.root.title": "Веганство",
+  "advancements.veganism.root.description": "Новый образ жизни. Животные следят за тобой.",
+
+  "advancements.veganism.first_kill.title": "Первая жертва",
+  "advancements.veganism.first_kill.description": "Убей своё первое животное. Они этого не забудут.",
+
+  "advancements.veganism.summon_spirit.title": "Дух животных",
+  "advancements.veganism.summon_spirit.description": "Убей достаточно животных, чтобы призвать их мстительного Духа.",
+
+  "advancements.veganism.cursed.title": "Проклят",
+  "advancements.veganism.cursed.description": "Поймай от Духа эффект Веганства. Мясо теперь под запретом.",
+
+  "advancements.veganism.defeat_spirit.title": "Возмездие",
+  "advancements.veganism.defeat_spirit.description": "Победи Духа животных.",
+
+  "advancements.veganism.clean_conscience.title": "Чистая совесть",
+  "advancements.veganism.clean_conscience.description": "Продержись достаточно долго без мяса и получи благословение животных."
 }

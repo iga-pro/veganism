@@ -1,0 +1,15 @@
+{
+  "parent": "veganism:root",
+  "display": {
+    "icon": { "item": "minecraft:porkchop" },
+    "title": { "translate": "advancements.veganism.first_kill.title" },
+    "description": { "translate": "advancements.veganism.first_kill.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": { "trigger": "minecraft:impossible" }
+  }
+}

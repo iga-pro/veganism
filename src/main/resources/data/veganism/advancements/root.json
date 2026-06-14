@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:oak_sapling" },
+    "title": { "translate": "advancements.veganism.root.title" },
+    "description": { "translate": "advancements.veganism.root.description" },
+    "background": "minecraft:textures/block/moss_block.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "tick": { "trigger": "minecraft:tick" }
+  }
+}
